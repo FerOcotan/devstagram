@@ -8,9 +8,12 @@
 
 @section('content')
 
-<div class="md:flex md:items-center">
-    <div class="md:w-1/2">
-      imagen aqui
+    <div class="md:flex md:items-center">
+        <div class="md:w-1/2">
+     <form     action="{{ route('imagenes.store') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded 
+     flex flex-col   justify-center items-center">
+    @csrf
+    </form>
 
     </div>
     <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-xs mt-10">
@@ -26,7 +29,7 @@
                     type="text"  
                     placeholder="tittle of the post" 
                      id="titulo"
-                      name="name"
+                      name="titulo"
                       value="{{ old('titulo') }}"
                     class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') border-red-500 @enderror"/>
                     
