@@ -46,6 +46,12 @@
         @enderror
     </div>
 
+
+    <div class="mb-5">
+        <label for="remember" class="mb-2 block uppercase
+         text-gray-500">Remember me</label>
+        <input type="checkbox"  id="remember" name="remember" class="mr-1"/>
+    </div>
  
     
     <input type="submit" value="Login" class="bg-blue-500 w-full p-3 text-white uppercase font-bold rounded-lg cursor-pointer"/>

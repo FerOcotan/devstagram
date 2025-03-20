@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,10 @@ class PostController extends Controller
     }
 
 
-    
-    public function index()
+
+    public function index(User $user)
     {
-     return view('layouts.dashboard');
+      
+     return view('layouts.dashboard',['user' => $user]);
     }
 }
