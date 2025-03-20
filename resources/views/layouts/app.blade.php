@@ -6,18 +6,37 @@
     <title>Devstagram - @yield('title')</title>
     @vite('resources/css/app.css')
 </head>
+
+
+
 <body class="bg-gray-100">
   <header class="p-5 border-b border-gray-200 bg-white shadow">
   
     <div class="container mx-auto flex justify-between items-center">
         <h1 class="text-3xl font-black">Devstagram</h1>
-        
+
+
+        @auth 
         <nav class="flex gap-2 items-center">
-            <a class="font-bold uppercase text-gray-600 text-sm"  href="#">Login</a>
-            <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">Register</a>
-            
-            
-        </nav>
+          <a class="font-bold uppercase text-gray-600 text-sm"  href="{{ route('login') }}">HI: <span class="font-normal">{{ auth()->user()->username }}</span></a>
+          <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">Logout</a>
+          
+          
+      </nav>
+
+        @endauth
+
+
+        @guest
+        <nav class="flex gap-2 items-center">
+          <a class="font-bold uppercase text-gray-600 text-sm"  href="{{ route('login') }}">Login</a>
+          <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">Register</a>
+          
+          
+      </nav>
+        @endguest
+
+
     </div>
         
   </header>

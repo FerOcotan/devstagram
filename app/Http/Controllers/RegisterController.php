@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -36,6 +37,9 @@ class RegisterController extends Controller
         
         'password' => Hash::make($request->password),
     ]);
+    Auth::attempt($request->only('email', 'password'));
+    return redirect()->route('post.index');
     }
+
 
 }
