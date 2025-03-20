@@ -17,7 +17,7 @@
 
     </div>
     <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-xs mt-10">
-        <form action="{{ route('register')  }}" method="POST" novalidate>
+        <form action="{{ route('post.store')  }}" method="POST" novalidate>
             @csrf
             
                 <div class="mb-5">
@@ -48,15 +48,28 @@
                     type="text"  
                     placeholder="descripcion of the post" 
                      id="descripcion"
+                     value="{{ old('descripcion') }}"
                       name="descripcion"
       
                     class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') border-red-500 @enderror"
                     >{{ old('descripcion') }}</textarea>
                     
-                    @error('titulo')
+                    @error('descripcion')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
                     @enderror
                     
+                </div>
+
+                <div class="mb-5">
+                    <input
+                     name="imagen"
+                     type="hidden"
+                     
+                     />
+
+                     @error('imagen')
+                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
+                     @enderror
                 </div>
 
                 <input type="submit" value="Publicar" class="bg-blue-500 w-full p-3 text-white uppercase font-bold rounded-lg cursor-pointer"/>
