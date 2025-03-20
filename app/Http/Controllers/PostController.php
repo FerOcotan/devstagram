@@ -21,12 +21,18 @@ class PostController extends Controller
     public function index(User $user)
     {
       
-     return view('layouts.dashboard',['user' => $user]);
+     $posts = Post::where('user_id', $user->id)->paginate(20);
+
+     return view('layouts.dashboard',
+     ['user' => $user,  
+     'posts' => $posts
+     ]);
     }
 
-    public function create()
+    public function create(User $user)
     {
 
+       
 
         return view('posts.create');
     }
@@ -45,6 +51,8 @@ class PostController extends Controller
             'imagen' => $request->imagen,
             'user_id' => FacadesAuth::id()
         ]);
+
+       
 
 
         return redirect()->route('post.index', FacadesAuth::user()->username);
