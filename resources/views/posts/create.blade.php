@@ -64,7 +64,7 @@
                     <input
                      name="imagen"
                      type="hidden"
-                     
+                     value="{{ old('imagen') }}"
                      />
 
                      @error('imagen')

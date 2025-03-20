@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class PostController extends Controller
 {
@@ -37,5 +39,14 @@ class PostController extends Controller
             'imagen' => 'required'
         ]);
 
+        Post::create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => FacadesAuth::id()
+        ]);
+
+
+        return redirect()->route('post.index', FacadesAuth::user()->username);
     }
 }
