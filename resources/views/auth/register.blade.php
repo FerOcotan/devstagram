@@ -10,7 +10,7 @@
     <div class="md:w-6/12 p-5">
         <img src="{{ asset('img/registrar.jpg') }}" alt="register_imagen" >
     </div>
-    <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xs">
+    <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
 <form action="{{ route('register')  }}" method="POST" novalidate>
 @csrf
 
@@ -26,12 +26,12 @@
           name="name"
           value="{{ old('name') }}"
         class="border p-3 w-full rounded-lg bg-white outline-none focus:border-gray-500 @error('name') border-red-500 @enderror"/>
+        
+        @error('name')
+        <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
+        @enderror
+        
     </div>
-
-   @error('name')
-   <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
-   @enderror
-   
  
     <div class="mb-5">
         <label for="username" class="mb-2 block uppercase

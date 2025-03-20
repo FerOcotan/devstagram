@@ -25,6 +25,6 @@ class LoginController extends Controller
             return back()->with('mensaje', 'Invalid credentials');
         }
 
-        return redirect()->route('post.index');
+        return redirect()->route('post.index', Auth::user()->username);
     }   
 }
