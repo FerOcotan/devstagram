@@ -37,7 +37,8 @@
         <label for="username" class="mb-2 block uppercase
          text-gray-500 font-bold">Username</label>
         <input type="text"  placeholder="Name of user"  id="username" name="username"
-        class="border p-3 w-full rounded-lg bg-white border-gray-200 outline-none focus:border-gray-500"/>
+        value="{{ old('username') }}"
+        class="border p-3 w-full rounded-lg bg-white outline-none focus:border-gray-500 @error('username') border-red-500 @enderror"/>
 
         @error('username')
         <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
@@ -48,7 +49,9 @@
         <label for="email" class="mb-2 block uppercase
          text-gray-500 font-bold">Email</label>
         <input type="email"  placeholder="Email"  id="email" name="email"
-        class="border p-3 w-full rounded-lg bg-white border-gray-200 outline-none focus:border-gray-500"/>
+        value="{{ old('email') }}"
+        class="border p-3 w-full rounded-lg bg-white outline-none focus:border-gray-500 @error('email') border-red-500 @enderror"/>
+
         @error('email')
         <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
         @enderror
@@ -56,8 +59,11 @@
     <div class="mb-5">
         <label for="password" class="mb-2 block uppercase
          text-gray-500 font-bold">Password</label>
+         
         <input type="password"  placeholder="password of register"  id="password" name="password"
         class="border p-3 w-full rounded-lg bg-white border-gray-200 outline-none focus:border-gray-500"/>
+
+
         @error('password')
         <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
         @enderror
