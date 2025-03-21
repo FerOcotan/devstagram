@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
+
 class PostController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index', 'show');
     }
 
 
@@ -57,4 +58,14 @@ class PostController extends Controller
 
         return redirect()->route('post.index', FacadesAuth::user()->username);
     }
+
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', ['post' => $post]);
+    }
+
+
+
+
 }

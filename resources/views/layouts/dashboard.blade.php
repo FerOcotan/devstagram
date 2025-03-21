@@ -50,9 +50,11 @@ Perfil: {{ $user->username }}
     @foreach ($posts as $post)
     <div>
         
-        <a href="">
+        <a href="{{ route('posts.show', ['post'=> $post, 'user' => $user]) }}">
             
-            <img src="{{  asset('uploads') .'/'. $post->imagen }}" alt="imagen del post" {{ $post->titulo }}>
+            <img src="{{  asset('uploads') .'/'. $post->imagen }}" alt="imagen del post" 
+            
+            {{ $post->titulo }}>
         </a>
     </div>
     @endforeach
