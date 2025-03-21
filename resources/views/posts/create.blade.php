@@ -31,7 +31,7 @@
                      id="titulo"
                       name="titulo"
                       value="{{ old('titulo') }}"
-                    class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') border-red-500 @enderror"/>
+                    class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') @enderror"/>
                     
                     @error('titulo')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center">{{ $message }}</p>
@@ -51,7 +51,7 @@
                      value="{{ old('descripcion') }}"
                       name="descripcion"
       
-                    class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') border-red-500 @enderror"
+                    class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') @enderror"
                     >{{ old('descripcion') }}</textarea>
                     
                     @error('descripcion')

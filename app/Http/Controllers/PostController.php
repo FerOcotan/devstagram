@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\File;
 
 
 class PostController extends Controller
-{
+{   
+    use AuthorizesRequests; // 🔹 Agregar esto
 
     public function __construct()
     {
@@ -63,6 +66,21 @@ class PostController extends Controller
     public function show(User $user, Post $post)
     {
         return view('posts.show', ['post' => $post, 'user' => $user]);
+    }
+
+    public function destroy(Post $post)
+    {
+      $this->authorize('delete', $post);
+        $image_path = public_path('uploads/' . $post->imagen);
+        $post->delete();
+
+        //Eliminar imagen
+        if(File::exists($image_path)){
+            unlink($image_path);
+            
+        }
+        return redirect()->route('post.index', FacadesAuth::user()->username);
+
     }
 
 

@@ -36,7 +36,29 @@
             {{ $post->descripcion }}
         </p>
 
+   
+
     </div>
+
+    @auth
+    @if ($post -> user_id === auth()->user()->id)
+        
+ 
+
+    <form action="{{route('post.destroy', $post)}}" method="POST" class="mt-4">
+        @csrf
+        @method('DELETE')
+        
+        <input type="submit" value="Eliminar Publicación" 
+        class="bg-red-500 hover:bg-red-600 text-white font-bold rounded px-4 py-2 
+               mt-4 cursor-pointer transition-all duration-200 
+               focus:outline-none focus:ring-2 focus:ring-red-400"/>
+ 
+        
+    </form>
+    @endif
+           
+    @endauth
 
     <div class="md:w-1/2 p-5 "></div>
     <div class="shadow bg-white p-5 mb-5">
@@ -65,7 +87,7 @@
 
                   name="comentario"
   
-                class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') border-red-500 @enderror"
+                class="border p-3 w-full rounded-lg bg-white outline-none border-gray-200 focus:border-gray-200 @error('name') @enderror"
                 ></textarea>
                 
                 @error('comentario')
