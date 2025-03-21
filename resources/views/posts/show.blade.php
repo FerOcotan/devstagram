@@ -41,9 +41,17 @@
     <div class="md:w-1/2 p-5 "></div>
     <div class="shadow bg-white p-5 mb-5">
         @auth
+        @if (session('mensaje'))
+        <div class="bg-green-500 text-white p-3 text-center mb-3 uppercase font-bold">
+            {{ session('mensaje') }}
+        </div>
+        @endif
+            
+      
         <p class="text-xl font-bold text-center mb-4">Agrega un nuevo comentario</p>
        
-        <form action="">
+        <form action="{{ route('comentarios.store', ['post'=> $post, 'user' => $user]) }}" method="POST">
+            @csrf
 
             <div class="mb-5">
                 <label for="descripcion" class="mb-2 block uppercase
