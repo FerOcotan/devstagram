@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\File;
 
 
 class PostController extends Controller
@@ -83,6 +84,11 @@ class PostController extends Controller
 
     }
 
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 
 
 
