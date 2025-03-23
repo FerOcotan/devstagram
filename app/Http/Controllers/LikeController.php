@@ -10,6 +10,8 @@ class LikeController extends Controller
 {
     public function store(Request $request, Post $post)
     {
+
+        //si utuliza el model directamente
         $post->likes()->create([
             'user_id' => $request->user()->id
         ]);
