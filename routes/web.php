@@ -5,6 +5,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\logoutcontroller;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,11 @@ Route::get('/', function () {
 
 Route::get('/register', [RegisterController::class, 'index']) -> name('register'); 
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/editar-perfil', [PerfilController::class, 'index']) -> name('perfil.index');
+Route::post('/editar-perfil', [PerfilController::class, 'store']) -> name('perfil.store');
+
+
 
 
 Route::get('/autenticar', [RegisterController::class, 'autenticar']);
@@ -39,3 +45,4 @@ Route::post('/imagenes', [ImagenController::class, 'store']) -> name('imagenes.s
 
 Route::post('/post/{post}/likes', [LikeController::class, 'store']) -> name('posts.likes.store');
 Route::delete('/post/{post}/likes', [LikeController::class, 'destroy']) -> name('posts.likes.destroy');
+
