@@ -22,6 +22,9 @@ class RegisterController extends Controller
       //dd('Post...');
 
       //dd($request);
+
+      $request->request->add(['username' =>Str::slug($request->username)]);
+      
       $request->validate([
         'name' => 'required|min:4|max:30',
         'username' => 'required|unique:users,username|min:4|max:20',
