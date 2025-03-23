@@ -16,7 +16,7 @@
   <header class="p-5 border-b border-gray-200 bg-white shadow">
   
     <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-3xl font-black">Devstagram</h1>
+        <a href="{{ route('home')}}"   class="text-3xl font-black">Devstagram</a>
 
 
         @auth 
