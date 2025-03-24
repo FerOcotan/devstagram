@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function __invoke()
+    public function __construct()
     {
-        return view('home');
+        $this->middleware('auth');
     }
 
+
+
+
+    public function __invoke()
+    
+    
+    {
+
+        $ids = Auth::user()->followings->pluck('id')->toArray();
+        $posts = Post::whereIn('user_id', $ids)->latest()->paginate(20); 
+        return view('home', ['posts' => $posts]);
+}
 }
