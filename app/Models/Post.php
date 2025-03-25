@@ -26,11 +26,10 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
-
-    public function checkLike(User $user)
+    
+    public function checkLike($user)
     {
-        return $this->likes->contains('user_id', $user->id);
+        return $this->likes()->where('user_id', $user->id)->exists();
     }
-
 }
     	
